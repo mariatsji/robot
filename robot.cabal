@@ -1,0 +1,59 @@
+cabal-version:      3.4
+name:               robot
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            MIT
+license-file:       LICENSE
+author:             Sjur Millidahl
+maintainer:         sjur.millidahl@gmail.com
+-- copyright:
+category:           Game
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common commonz
+    ghc-options: -Wall
+    default-extensions:
+        DerivingStrategies
+        OverloadedStrings
+        QuasiQuotes
+    default-language: GHC2021
+
+library
+    import:           commonz
+    exposed-modules:
+        Robot
+        , ParseInstructions
+    hs-source-dirs:   src
+    build-depends:
+        base
+        , text
+        , attoparsec
+
+executable robot
+    import:           commonz
+    main-is:          Main.hs
+    build-depends:
+        base
+        , robot
+        , text
+    hs-source-dirs:   app
+    
+
+test-suite robot-test
+    import:           commonz
+    type:             exitcode-stdio-1.0
+    main-is:          Main.hs
+    other-modules:
+        ParserTests
+    hs-source-dirs:   test
+    build-depends:
+        base
+        , robot
+        , hspec
+        , neat-interpolation
+        , text
+    hs-source-dirs:   test
+    ghc-options:         -Wno-incomplete-uni-patterns
