@@ -5,7 +5,7 @@ in pkgs.haskellPackages.shellFor {
   packages = hpkgs:
     [
       # call our generated Nix expression manually
-      (import ./backend.nix)
+      (import ./robot.nix)
     ];
 
   # development tools we use

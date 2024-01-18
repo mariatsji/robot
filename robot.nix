@@ -6,4 +6,6 @@ in with nixpkgs;
     (nixpkgs.lib.sourceFilesBySuffices ./. [
       ".hs"
       ".cabal"
+      "CHANGELOG.md"
+      "LICENSE"
     ]) { })

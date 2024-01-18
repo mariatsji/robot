@@ -14,7 +14,6 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common commonz
-    ghc-options: -Wall
     default-extensions:
         DerivingStrategies
         OverloadedStrings
@@ -26,9 +25,11 @@ library
     exposed-modules:
         Robot
         , ParseInstructions
+        , Render
     hs-source-dirs:   src
     build-depends:
         base
+        , brick
         , text
         , attoparsec
 
@@ -40,6 +41,10 @@ executable robot
         , robot
         , text
     hs-source-dirs:   app
+    ghc-options:
+        -Werror
+        -Wall
+        -threaded
     
 
 test-suite robot-test
