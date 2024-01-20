@@ -21,7 +21,10 @@ type Row = Int -- 0 is the top row
 type Col = Int -- 0 is the leftmost column
 
 data Robot = Robot Direction Row Col
-    deriving stock (Eq, Show)
+    deriving stock (Eq)
+
+instance Show Robot where
+    show (Robot d _ _) = show d
 
 new :: Robot
 new = Robot R 0 0

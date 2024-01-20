@@ -32,6 +32,7 @@ library
         , brick
         , text
         , attoparsec
+        , vty
 
 executable robot
     import:           commonz
