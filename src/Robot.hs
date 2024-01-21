@@ -9,8 +9,8 @@ data Direction = U | D | L | R
     deriving stock (Eq)
 
 instance Show Direction where
-    show U = "^"
-    show D = "v"
+    show U = "/\\"
+    show D = "\\/"
     show L = "<-"
     show R = "->"
 

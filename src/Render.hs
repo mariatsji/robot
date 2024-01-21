@@ -9,11 +9,14 @@ import qualified Graphics.Vty as V
 
 import Robot
 
-robotWidget :: Robot -> Widget ()
-robotWidget robot = str $ show robot
+robotWidget :: Robot -> (Int, Int) -> Widget ()
+robotWidget (Robot d r c) (row, col) = str 
+    $ if row == r && col == c then show d else "  "
 
 robotWidgets :: Robot -> [[Widget ()]]
-robotWidgets robot =  replicate 10 $ replicate 10 $ robotWidget robot
+robotWidgets robot = 
+    let coords = [[(row, col) | col <- [0..9]] | row <- [0..9]]
+    in (fmap . fmap) (robotWidget robot) coords
 
 drawUI :: Robot -> [Widget ()]
 drawUI robot = [T.renderTable $ T.table $ robotWidgets robot]

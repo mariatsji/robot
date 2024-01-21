@@ -1,11 +1,11 @@
 let
   nixpkgs = import ./nixpkgs.nix;
-
+  thinner = nixpkgs.haskell.lib.dontHaddock;
 in with nixpkgs;
-  (haskellPackages.callCabal2nix "robot"
+  thinner ((haskellPackages.callCabal2nix "robot"
     (nixpkgs.lib.sourceFilesBySuffices ./. [
       ".hs"
       ".cabal"
       "CHANGELOG.md"
       "LICENSE"
-    ]) { })
+    ]) { }))
