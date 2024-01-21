@@ -1,6 +1,8 @@
 module Render(renderR) where
 
 import Brick
+import qualified Brick.Main as M
+import qualified Brick.Types as BT
 import qualified Brick.Widgets.Border as B
 import qualified Brick.Widgets.Center as C
 import qualified Brick.Widgets.Table as T
@@ -30,6 +32,7 @@ app = App { appDraw = drawUI
           }
 
 handleEvent :: BrickEvent () () -> EventM () Robot ()
+handleEvent (BT.VtyEvent (V.EvKey V.KEsc [])) = M.halt
 handleEvent _ = pure ()
 
 renderR :: Robot -> IO ()
